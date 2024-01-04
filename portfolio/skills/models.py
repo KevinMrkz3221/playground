@@ -5,3 +5,6 @@ class Skill(models.Model):
     name = models.CharField(max_length=200)
     level = models.CharField(max_length=200)
     percentage = models.IntegerField(blank=True, null = True)
+
+    def __str__(self) -> str:
+        return self.name

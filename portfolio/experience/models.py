@@ -11,7 +11,7 @@ class Experience(models.Model):
     current = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.title
+        return self.title + ' | ' +self.company
     
 class Task(models.Model):
     experience = models.ForeignKey(Experience, on_delete = models.CASCADE, related_name='tasks')

@@ -12,6 +12,7 @@ pillow = "*"
 django-cors-headers = "*"
 coreapi = "*"
 python-dotenv = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 

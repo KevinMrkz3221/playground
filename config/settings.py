@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,19 +45,21 @@ BASE_APPS = [
 
 THIRD_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'coreapi'
 ]
 
-OWN_APPS = [
-    'certification',
-    'experience',
-    'project',
-    'skills',
-    'knowledge'
+PORTFOLIO_APPS = [
+    'portfolio',
+    'portfolio.certification',
+    'portfolio.experience',
+    'portfolio.project',
+    'portfolio.skills',
+    'portfolio.knowledge'
 ]
 
-INSTALLED_APPS = BASE_APPS + THIRD_APPS + OWN_APPS
+INSTALLED_APPS = BASE_APPS + THIRD_APPS + PORTFOLIO_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +73,10 @@ MIDDLEWARE = [
 ]
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # Si deseas soporte para sesiones de navegador
+    ],
 }
 
 ROOT_URLCONF = 'config.urls'
@@ -152,3 +159,10 @@ from .cdn.conf import *
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Tiempo de expiracion
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=100),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=100),
+}

@@ -16,15 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.documentation import include_docs_urls
-
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('certification.urls')),
-    path('', include('experience.urls')),
-    path('', include('knowledge.urls')),
-    path('', include('project.urls')),
-    path('', include('skills.urls')),
-    path('docs/', include_docs_urls(title='API Playground'))
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # endpoint para obtener el token
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # endpoint para refrescar el token
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),  # endpoint para verificar el token
+    path('api/v1/portfolio/', include('portfolio.urls')),
+    
 ]
