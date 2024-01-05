@@ -8,6 +8,9 @@ class Certification(models.Model):
     file = models.FileField(upload_to='archivos/', blank=True, null=True)
     url = models.URLField()
 
+    class Meta:
+        db_table = 'certification'
+        ordering = ('-date',)
 
     def __str__(self) -> str:
         return self.title
