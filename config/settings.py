@@ -46,8 +46,7 @@ BASE_APPS = [
 THIRD_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
-    'coreapi'
+    'drf_yasg'
 ]
 
 PORTFOLIO_APPS = [
@@ -56,7 +55,7 @@ PORTFOLIO_APPS = [
     'portfolio.experience',
     'portfolio.project',
     'portfolio.skills',
-    'portfolio.knowledge'
+    'portfolio.knowledge',
 ]
 
 INSTALLED_APPS = BASE_APPS + THIRD_APPS + PORTFOLIO_APPS
@@ -64,7 +63,6 @@ INSTALLED_APPS = BASE_APPS + THIRD_APPS + PORTFOLIO_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -72,7 +70,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',  # Si deseas soporte para sesiones de navegador

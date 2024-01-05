@@ -10,9 +10,11 @@ boto3 = "*"
 django-storages = "*"
 pillow = "*"
 django-cors-headers = "*"
-coreapi = "*"
 python-dotenv = "*"
 djangorestframework-simplejwt = "*"
+drf-yasg = "*"
+markdown = "*"
+django-filter = "*"
 
 [dev-packages]
 

@@ -8,5 +8,5 @@ router.register(r'knowledges', KnowledgeViewSet, 'knowledges')
 
 
 urlpatterns = [
-    path('api/v1/', include(router.urls))
+    path('', include(router.urls))
 ]
